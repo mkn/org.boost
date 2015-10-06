@@ -5,26 +5,15 @@ version: master
 
 profiles:
   - name: c
-    include: ./b/libs/core/include   ./b/libs/config/include
+    include: ./b
     lang: cpp
 
   - name: system
     parent: c
-    include: 
-        ./b/libs/assert/include ./b/libs/predef/include
-        ./b/libs/system/include
     source:  ./b/libs/system/src
 
   - name: filesystem
     parent: c
-    include: 
-        ./b/libs/type_traits/include ./b/libs/iterator/include
-        ./b/libs/mpl/include         ./b/libs/preprocessor/include
-        ./b/libs/detail/include      ./b/libs/static_assert/include
-        ./b/libs/smart_ptr/include   ./b/libs/throw_exception/include
-        ./b/libs/io/include          ./b/libs/functional/include
-        ./b/libs/range/include
-        ./b/libs/filesystem/include
     source:  ./b/libs/filesystem/src
     dependencies:
       - name: boost
