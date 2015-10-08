@@ -10,11 +10,11 @@ profiles:
 
   - name: system
     parent: c
-    source:  ./b/libs/system/src
+    source: ./b/libs/system/src
 
   - name: filesystem
     parent: c
-    source:  ./b/libs/filesystem/src
+    source: ./b/libs/filesystem/src
     dependencies:
       - name: boost
         version: master
