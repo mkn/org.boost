@@ -1,7 +1,11 @@
-# boost commit 93ab095cd53e5c01cfb44f5b8df00dad1409175c
+# boost commit efb6d4c660f93fea7dd8037220945febdee53d74
 
-name: boost
+name: org.boost
 version: master
+
+scm:
+  type: git
+  remote: http://github.com/rant/org.boost
 
 profiles:
   - name: c
