@@ -6,16 +6,14 @@ version: master
 profiles:
   - name: c
     include: ./b
+    install: ./lib
     lang: cpp
 
   - name: system
     parent: c
-    source:  ./b/libs/system/src
+    source: ./b/libs/system/src
 
   - name: filesystem
     parent: c
-    source:  ./b/libs/filesystem/src
-    dependencies:
-      - name: boost
-        version: master
-        profile: system
+    source: ./b/libs/filesystem/src
+    self: system
