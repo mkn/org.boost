@@ -1,4 +1,4 @@
 [submodule "b"]
 	path = b
 	url = https://github.com/boostorg/boost
-	ignore = dirty
+	dirty = ignore
