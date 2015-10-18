@@ -3,9 +3,7 @@
 name: org.boost
 version: master
 
-scm:
-  type: git
-  remote: http://github.com/rant/org.boost
+scm: http://github.com/rant/org.boost
 
 profiles:
   - name: c
