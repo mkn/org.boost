@@ -3,8 +3,6 @@
 name: org.boost
 version: master
 
-scm: http://github.com/rant/org.boost
-
 profiles:
   - name: c
     include: ./b
