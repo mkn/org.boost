@@ -3,7 +3,7 @@
 name: org.boost
 version: master
 
-profiles:
+profile:
   - name: c
     inc: ./b
     install: ./lib
