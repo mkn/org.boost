@@ -3,19 +3,17 @@
 name: org.boost
 version: master
 
-scm: http://github.com/rant/org.boost
-
 profiles:
   - name: c
-    include: ./b
+    inc: ./b
     install: ./lib
     lang: cpp
 
   - name: system
     parent: c
-    source: ./b/libs/system/src
+    src: ./b/libs/system/src
 
   - name: filesystem
     parent: c
-    source: ./b/libs/filesystem/src
+    src: ./b/libs/filesystem/src
     self: system
