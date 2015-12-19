@@ -1,6 +1,6 @@
 
 
-REM @ECHO off
+@ECHO off
 SET PWD=%CD%
 IF NOT EXIST %PWD%\b (
 	git clone https://github.com/boostorg/boost -b master b --recursive
