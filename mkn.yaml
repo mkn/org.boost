@@ -1,7 +1,8 @@
 
 
 name: org.boost
-version: master
+
+parent: c
 
 profile:
   - name: c
