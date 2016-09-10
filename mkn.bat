@@ -3,7 +3,7 @@
 @ECHO off
 SET PWD=%CD%
 IF NOT EXIST %PWD%\b (
-	git clone https://github.com/boostorg/boost -b master b --recursive || exit 666 /b
+	git clone --depth 1 https://github.com/boostorg/boost -b master b --recursive || exit 666 /b
 	CD b
 	FOR /f %%d in ('dir /b %PWD%\b\libs') do IF EXIST %PWD%\b\libs\%%d\include ROBOCOPY /s %PWD%\b\libs\%%d\include\boost %PWD%\b\boost /NFL /NDL /NJH /NJS /nc /ns /np
 )
