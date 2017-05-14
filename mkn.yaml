@@ -13,8 +13,40 @@ profile:
   - name: system
     parent: c
     src: ./b/libs/system/src
+    out: boost_system
 
   - name: filesystem
     parent: c
     src: ./b/libs/filesystem/src
     self: system
+    out: boost_filesystem
+
+  - name: chrono
+    parent: c
+    src: ./b/libs/chrono/src
+    self: system
+    out: boost_chrono
+
+  - name: date_time
+    parent: c
+    src: ./b/libs/date_time/src
+    self: system
+    out: boost_date_time
+
+  - name: serialization
+    parent: c
+    src: ./b/libs/serialization/src
+    self: system
+    out: boost_serialization
+
+  - name: thread
+    parent: c
+    src: | 
+        ./b/libs/thread/src, 0
+    if_src:
+      bsd: b/libs/thread/src/pthread/once.cpp b/libs/thread/src/pthread/thread.cpp
+      nix: b/libs/thread/src/pthread/once.cpp b/libs/thread/src/pthread/thread.cpp
+      win: b/libs/thread/src/win32
+    self: system
+    out: boost_thread
+
