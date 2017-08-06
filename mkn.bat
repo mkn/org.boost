@@ -2,10 +2,11 @@
 
 @ECHO off
 SET PWD=%CD%
+SET VERSION="master"
 
 IF NOT EXIST %PWD%\b (
 
-git clone --depth 1 https://github.com/boostorg/boost -b master b --recursive || exit 666 /b
+git clone --depth 1 https://github.com/boostorg/boost -b %VERSION% b --recursive || exit 666 /b
 CD b
 FOR /f %%d in ('dir /b "%PWD%\b\libs"') do ^
 IF EXIST "%PWD%\b\libs\%%d\include" ^
