@@ -41,17 +41,17 @@ profile:
     out: boost_program_options
 
   - name: serialization
-    self: system
+    parent: system
     src: ./b/libs/serialization/src
     out: boost_serialization
 
   - name: regex
-    self: system
+    parent: system
     src: ./b/libs/regex/src
     out: boost_regex
 
   - name: thread
-    self: system
+    parent: system
     src: | 
         ./b/libs/thread/src, 0
     if_src:
