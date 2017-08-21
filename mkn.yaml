@@ -2,6 +2,10 @@
 
 name: org.boost
 
+property:
+  boost.sys.arch: x86_64
+  boost.sys.binf: elf
+
 parent: c
 
 profile:
@@ -19,6 +23,27 @@ profile:
     parent: system
     src: ./b/libs/atomic/src
     out: boost_atomic
+
+  - name: context
+    parent: system
+    src: | 
+        ./b/libs/context/src/asm/(.*${boost.sys.arch}_.*${boost.sys.binf}.*)
+    if_src:
+      bsd: ./b/libs/context/src/posix
+      nix: ./b/libs/context/src/posix
+      win: ./b/libs/context/src/windows
+    out: boost_context
+
+  - name: coroutine
+    parent: thread
+    src: | 
+        ./b/libs/coroutine/src, 0
+        ./b/libs/coroutine/src/detail
+    if_src:
+      bsd: ./b/libs/coroutine/src/posix
+      nix: ./b/libs/coroutine/src/posix
+      win: ./b/libs/coroutine/src/windows
+    out: boost_coroutine
 
   - name: filesystem
     parent: system
