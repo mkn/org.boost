@@ -10,14 +10,18 @@ VERSION="master"
 DIR="b"
 URL="https://dl.bintray.com/boostorg/release/1.65.1/source/boost_1_65_1.tar.gz"
 
-wget $URL
+BOOST="boost_1_65_1"
+GZ_FILE="${BOOST}.tar.gz"
 
-tar xf boost_1_65_1.tar.gz
-mv boost_1_65_1 b
-cd b
+[ ! -f "$GZ_FILE" ] && wget $URL
+[ ! -d "$BOOST" ] && tar xf $GZ_FILE
+
+rm -rf $DIR
+mv $BOOST $DIR
+
+pushd $DIR
 ./bootstrap.sh
 ./b2 headers
-
-rm boost_1_65_1.tar.gz
+popd
 
 exit 0
