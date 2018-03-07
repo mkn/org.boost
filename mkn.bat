@@ -2,7 +2,7 @@
 
 @ECHO off
 SET PWD=%CD%
-SET VERSION="boost-1.65.1"
+SET VERSION="boost-1.66.0"
 
 IF NOT EXIST %PWD%\b (
 
