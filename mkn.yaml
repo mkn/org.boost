@@ -27,7 +27,7 @@ profile:
 
   - name: context
     parent: c
-    src: | 
+    src: |
         ./b/libs/context/src/asm/(.*${boost.sys.arch}_.*${boost.sys.binf}.*)
     if_src:
       bsd: ./b/libs/context/src/posix
@@ -38,7 +38,7 @@ profile:
 
   - name: coroutine
     parent: c
-    src: | 
+    src: |
         ./b/libs/coroutine/src, 0
         ./b/libs/coroutine/src/detail
     if_src:
@@ -86,7 +86,7 @@ profile:
 
   - name: thread
     parent: c
-    src: | 
+    src: |
         ./b/libs/thread/src, 0
     if_src:
       bsd: b/libs/thread/src/pthread/once.cpp b/libs/thread/src/pthread/thread.cpp
