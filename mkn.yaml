@@ -95,3 +95,8 @@ profile:
     self: system
     out: boost_thread
 
+  - name: units
+    parent: c
+    src: ./b/libs/test/src/(^((?!main).)*$)
+    self: system
+    out: boost_unit_test_framework
