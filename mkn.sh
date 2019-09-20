@@ -7,7 +7,7 @@ CWD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 [ -f "$CWD/b" ] && exit 0
 
 DIR="b"
-VER="1.68.0"
+VER="1.71.0"
 BOOST=boost_$(echo $VER | sed -e "s/\./_/g")
 URL="https://dl.bintray.com/boostorg/release/${VER}/source/${BOOST}.tar.gz"
 
