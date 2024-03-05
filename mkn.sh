@@ -1,17 +1,16 @@
 #!/usr/bin/env bash
 
-set -e
+set -ex
 
 CWD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 [ -f "$CWD/b" ] && exit 0
 
 DIR="b"
-VER="1.71.0"
-BOOST=boost_$(echo $VER | sed -e "s/\./_/g")
-URL="https://dl.bintray.com/boostorg/release/${VER}/source/${BOOST}.tar.gz"
-
+VER="1.84.0"
+BOOST="boost-${VER}"
 GZ_FILE="${BOOST}.tar.gz"
+URL="https://github.com/boostorg/boost/releases/download/boost-${VER}/${GZ_FILE}"
 
 [ ! -f "$GZ_FILE" ] && wget $URL
 [ ! -d "$BOOST" ] && tar xf $GZ_FILE
