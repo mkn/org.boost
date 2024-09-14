@@ -1,26 +1,25 @@
 #!/usr/bin/env bash
-
 set -ex
-
 CWD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-[ -f "$CWD/b" ] && exit 0
-
 DIR="b"
-VER="1.84.0"
+VER="1.86.0"
 BOOST="boost-${VER}"
-GZ_FILE="${BOOST}.tar.gz"
-URL="https://github.com/boostorg/boost/releases/download/boost-${VER}/${GZ_FILE}"
+TAR_FILE="boost-${VER}-cmake.tar.xz"
+URL="https://github.com/boostorg/boost/releases/download/boost-${VER}/${TAR_FILE}"
 
-[ ! -f "$GZ_FILE" ] && wget $URL
-[ ! -d "$BOOST" ] && tar xf $GZ_FILE
-
-rm -rf $DIR
-mv $BOOST $DIR
-
-pushd $DIR
-./bootstrap.sh
-./b2 headers
-popd
-
-exit 0
+(
+    cd $CWD
+    [ -d "lib" ] && echo "boost already built - skipping" && exit 0
+    [ ! -f "$TAR_FILE" ] && wget $URL
+    [ ! -d "$BOOST" ] && tar xf $TAR_FILE
+    rm -rf build $DIR && mv "$BOOST" "$DIR"
+    mkdir build && cd build
+    cmake -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=$CWD \
+        -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=true \
+        "$CWD/$DIR"
+    ninja && ninja install
+    rm -rf build $DIR $TAR_FILE
+)

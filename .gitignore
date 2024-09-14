@@ -2,3 +2,5 @@ b
 bin
 lib
 *.tar.*
+build
+include
