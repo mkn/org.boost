@@ -1,0 +1,25 @@
+name: Build
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+on:
+  pull_request:
+jobs:
+  Ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - run: |
+        sudo apt update && sudo apt install -y ninja-build cmake
+        curl -Lo mkn https://github.com/mkn/mkn/releases/download/latest/mkn_nix
+        chmod +x mkn && PATH="$PWD:$PATH" ./mkn.sh
+
+  Fedora:
+    runs-on: ubuntu-latest
+    container: fedora:40
+    steps:
+    - uses: actions/checkout@v3
+    - run: |
+        sudo dnf install -y g++ cmake ninja-build
+        curl -Lo mkn https://github.com/mkn/mkn/releases/download/latest/mkn_nix
+        chmod +x mkn && PATH="$PWD:$PATH" ./mkn.sh
