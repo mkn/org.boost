@@ -1,6 +1,6 @@
 b
 bin
-lib
+lib*
 *.tar.*
 build
 include
